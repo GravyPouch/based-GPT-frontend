@@ -1,6 +1,5 @@
-import { FC, MutableRefObject } from 'react';
-
 import { Prompt } from '@/types/prompt';
+import { FC, MutableRefObject } from 'react';
 
 interface Props {
   prompts: Prompt[];

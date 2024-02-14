@@ -1,14 +1,12 @@
 import { Conversation } from '@/types/chat';
 import { OpenAIModelID, OpenAIModels } from '@/types/openai';
-
-import { DEFAULT_SYSTEM_PROMPT, DEFAULT_TEMPERATURE } from './const';
+import { DEFAULT_SYSTEM_PROMPT } from './const';
 
 export const cleanSelectedConversation = (conversation: Conversation) => {
   // added model for each conversation (3/20/23)
   // added system prompt for each conversation (3/21/23)
   // added folders (3/23/23)
   // added prompts (3/26/23)
-  // added messages (4/16/23)
 
   let updatedConversation = conversation;
 
@@ -28,24 +26,10 @@ export const cleanSelectedConversation = (conversation: Conversation) => {
     };
   }
 
-  if (!updatedConversation.temperature) {
-    updatedConversation = {
-      ...updatedConversation,
-      temperature: updatedConversation.temperature || DEFAULT_TEMPERATURE,
-    };
-  }
-
   if (!updatedConversation.folderId) {
     updatedConversation = {
       ...updatedConversation,
       folderId: updatedConversation.folderId || null,
-    };
-  }
-
-  if (!updatedConversation.messages) {
-    updatedConversation = {
-      ...updatedConversation,
-      messages: updatedConversation.messages || [],
     };
   }
 
@@ -57,7 +41,6 @@ export const cleanConversationHistory = (history: any[]): Conversation[] => {
   // added system prompt for each conversation (3/21/23)
   // added folders (3/23/23)
   // added prompts (3/26/23)
-  // added messages (4/16/23)
 
   if (!Array.isArray(history)) {
     console.warn('history is not an array. Returning an empty array.');
@@ -74,16 +57,8 @@ export const cleanConversationHistory = (history: any[]): Conversation[] => {
         conversation.prompt = DEFAULT_SYSTEM_PROMPT;
       }
 
-      if (!conversation.temperature) {
-        conversation.temperature = DEFAULT_TEMPERATURE;
-      }
-
       if (!conversation.folderId) {
         conversation.folderId = null;
-      }
-
-      if (!conversation.messages) {
-        conversation.messages = [];
       }
 
       acc.push(conversation);

@@ -1,3 +1,8 @@
+import { Conversation } from '@/types/chat';
+import { OpenAIModelID } from '@/types/openai';
+import { Prompt } from '@/types/prompt';
+import { DEFAULT_SYSTEM_PROMPT } from '@/utils/app/const';
+import { useTranslation } from 'next-i18next';
 import {
   FC,
   KeyboardEvent,
@@ -6,14 +11,6 @@ import {
   useRef,
   useState,
 } from 'react';
-
-import { useTranslation } from 'next-i18next';
-
-import { DEFAULT_SYSTEM_PROMPT } from '@/utils/app/const';
-
-import { Conversation } from '@/types/chat';
-import { Prompt } from '@/types/prompt';
-
 import { PromptList } from './PromptList';
 import { VariableModal } from './VariableModal';
 

@@ -1,4 +1,8 @@
-import { DEFAULT_SYSTEM_PROMPT, DEFAULT_TEMPERATURE } from '@/utils/app/const';
+import { ExportFormatV1, ExportFormatV2, ExportFormatV4 } from '@/types/export';
+import { OpenAIModels, OpenAIModelID } from '@/types/openai';
+import { DEFAULT_SYSTEM_PROMPT } from '@/utils/app/const';
+import { it, describe, expect } from 'vitest';
+
 import {
   cleanData,
   isExportFormatV1,
@@ -7,11 +11,6 @@ import {
   isExportFormatV4,
   isLatestExportFormat,
 } from '@/utils/app/importExport';
-
-import { ExportFormatV1, ExportFormatV2, ExportFormatV4 } from '@/types/export';
-import { OpenAIModelID, OpenAIModels } from '@/types/openai';
-
-import { describe, expect, it } from 'vitest';
 
 describe('Export Format Functions', () => {
   describe('isExportFormatV1', () => {
@@ -102,12 +101,11 @@ describe('cleanData Functions', () => {
             ],
             model: OpenAIModels[OpenAIModelID.GPT_3_5],
             prompt: DEFAULT_SYSTEM_PROMPT,
-            temperature: DEFAULT_TEMPERATURE,
             folderId: null,
           },
         ],
         folders: [],
-        prompts: [],
+        prompts:[]
       });
     });
   });
@@ -158,7 +156,6 @@ describe('cleanData Functions', () => {
             ],
             model: OpenAIModels[OpenAIModelID.GPT_3_5],
             prompt: DEFAULT_SYSTEM_PROMPT,
-            temperature: DEFAULT_TEMPERATURE,
             folderId: null,
           },
         ],
@@ -194,7 +191,6 @@ describe('cleanData Functions', () => {
             ],
             model: OpenAIModels[OpenAIModelID.GPT_3_5],
             prompt: DEFAULT_SYSTEM_PROMPT,
-            temperature: DEFAULT_TEMPERATURE,
             folderId: null,
           },
         ],
@@ -216,7 +212,7 @@ describe('cleanData Functions', () => {
           },
         ],
       } as ExportFormatV4;
-
+      
       const obj = cleanData(data);
       expect(isLatestExportFormat(obj)).toBe(true);
       expect(obj).toEqual({
@@ -237,7 +233,6 @@ describe('cleanData Functions', () => {
             ],
             model: OpenAIModels[OpenAIModelID.GPT_3_5],
             prompt: DEFAULT_SYSTEM_PROMPT,
-            temperature: DEFAULT_TEMPERATURE,
             folderId: null,
           },
         ],
@@ -258,7 +253,9 @@ describe('cleanData Functions', () => {
             folderId: null,
           },
         ],
+
       });
     });
   });
+  
 });

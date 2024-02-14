@@ -1,5 +1,5 @@
 import { Conversation } from './chat';
-import { FolderInterface } from './folder';
+import { Folder } from './folder';
 import { PluginKey } from './plugin';
 import { Prompt } from './prompt';
 
@@ -10,7 +10,7 @@ export interface LocalStorage {
   selectedConversation: Conversation;
   theme: 'light' | 'dark';
   // added folders (3/23/23)
-  folders: FolderInterface[];
+  folders: Folder[];
   // added prompts (3/26/23)
   prompts: Prompt[];
   // added showChatbar and showPromptbar (3/26/23)
